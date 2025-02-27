@@ -28,6 +28,7 @@ python -m venv .venv
 python3 -m venv .venv
 source .venv/bin/activate
 ```
+VS Code Setup ---> https://code.visualstudio.com/docs/python/environments
 
 3. Install dependencies:
 ```bash
