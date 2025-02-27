@@ -19,13 +19,13 @@ cd boko-hacks-2025
 ```
 2. Git Setup (For Beginners)
 
-1. Install Git
+1) Install Git
 - Download and install Git from [git-scm.com](https://git-scm.com/downloads)
 - After installation, verify Git is installed by running command prompt:
 ```
 git --version
 ```
-2. Configure Git (Required for First-Time Users)
+2) Configure Git (Required for First-Time Users)
 Run the following commands to set your username and email (needed for commits):
 ```
 git config --global user.name "Your Name"
@@ -35,7 +35,7 @@ To check your Git settings:
 ```
 git config --list
 ```
-3. Using Git with HTTPS (Easiest for Beginners)
+3) Using Git with HTTPS (Easiest for Beginners)
 - Clone repositories using HTTPS (no extra setup required):
 ```
 git clone https://github.com/Nick4453/Boko-Hacks-2025.git
@@ -44,7 +44,7 @@ git clone https://github.com/Nick4453/Boko-Hacks-2025.git
 ```
 git config --global credential.helper cache
 ```
-4. Setting Up Git in VS Code
+4) Setting Up Git in VS Code
 - Open VS Code and install the Git Extension (built-in for most versions).
 - Open terminal in VS Code and check Git is recognized:
 ```
@@ -55,7 +55,7 @@ git --version
 get config --global core.editor "code --wait"
 ```
 
-5. Create and activate a virtual environment (recommended): (You can also do this through VS Code)
+5) Create and activate a virtual environment (recommended): (You can also do this through VS Code)
 ```bash
 # Windows
 python -m venv .venv
