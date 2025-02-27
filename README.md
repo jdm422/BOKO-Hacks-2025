@@ -55,7 +55,7 @@ git --version
 get config --global core.editor "code --wait"
 ```
 
-6. Create and activate a virtual environment (recommended): (You can also do this through VS Code)
+5. Create and activate a virtual environment (recommended): (You can also do this through VS Code)
 ```bash
 # Windows
 python -m venv .venv
