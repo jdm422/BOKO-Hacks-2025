@@ -3,6 +3,9 @@ from extensions import db
 from models.user import User
 import time
 from sqlalchemy import text
+from threading import Lock
+
+lock = Lock()
 
 retirement_bp = Blueprint("retirement", __name__, url_prefix="/apps/401k")
 
@@ -42,30 +45,31 @@ def contribute():
     if username not in user_accounts:
         user_accounts[username] = {"funds": 10000, "401k_balance": 0}
     
-    user_data = user_accounts[username]
+    with lock:
+        user_data = user_accounts[username]
 
-    if amount <= 0:
-        return jsonify({
-            "message": "Invalid contribution amount!", 
-            "funds": user_data["funds"],
-            "401k_balance": user_data["401k_balance"]
-        }), 400
-    
-    if amount > user_data["funds"]:
-        return jsonify({
-            "message": "Insufficient personal funds for this contribution!", 
-            "funds": user_data["funds"],
-            "401k_balance": user_data["401k_balance"]
-        }), 400
+        if amount <= 0:
+            return jsonify({
+                "message": "Invalid contribution amount!", 
+                "funds": user_data["funds"],
+                "401k_balance": user_data["401k_balance"]
+            }), 400
+        
+        if amount > user_data["funds"]:
+            return jsonify({
+                "message": "Insufficient personal funds for this contribution!", 
+                "funds": user_data["funds"],
+                "401k_balance": user_data["401k_balance"]
+            }), 400
 
 
-    time.sleep(2)  
+        time.sleep(2)  
 
-    company_match = amount * 0.5
-    total_contribution = amount + company_match
+        company_match = amount * 0.5
+        total_contribution = amount + company_match
 
-    user_data["funds"] -= amount  # Deduct funds
-    user_data["401k_balance"] += total_contribution  # Add to 401k balance
+        user_data["funds"] -= amount  # Deduct funds
+        user_data["401k_balance"] += total_contribution  # Add to 401k balance
 
     return jsonify({
         "message": f"Contributed ${amount}. Employer matched ${company_match}!",
