@@ -7,7 +7,7 @@ This project is a deliberately vulnerable web application designed to help stude
 ## Requirements
 - Python 3.8 or higher → [Download Python](https://www.python.org/downloads/)
 - Pip (Python package installer)
-- SQLite → [Download SQLite](https://www.sqlite.org/download.html)
+- SQLite → [Download SQLite](https://www.sqlite.org/download.html) (Optional if you want binaries otherwise; dependencies should install automatically)
 - Modern web browser (Chrome/Firefox recommended)
 - Text editor or IDE (VS Code recommended)
 
@@ -15,10 +15,10 @@ This project is a deliberately vulnerable web application designed to help stude
 1. Clone the repository:
 ```bash
 git clone https://github.com/Nick4453/Boko-Hacks-2025.git
-cd boko-hacks-25
+cd boko-hacks-2025
 ```
 
-2. Create and activate a virtual environment (recommended):
+2. Create and activate a virtual environment (recommended): (You can also do this through VS Code)
 ```bash
 # Windows
 python -m venv .venv
@@ -34,12 +34,12 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-4. Initialize the database:
+4. Initialize the database: (You may not need to do this step; if it doesn't work, check that your env path is correct)
 ```bash
 python -c "from app import app, setup_database; app.app_context().push(); setup_database()"
 ```
 
-5. Start the application:
+5. Start the application: 
 ```bash
 python app.py
 ```
