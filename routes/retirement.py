@@ -4,6 +4,13 @@ from models.user import User
 import time
 from sqlalchemy import text
 
+from flask_login import login_required, current_user
+
+@retirement_bp.route("/")
+@login_required
+
+def retirement_dashboard():
+    return render_template("401k.html", username=current_user.username 
 retirement_bp = Blueprint("retirement", __name__, url_prefix="/apps/401k")
 
 user_accounts = {
